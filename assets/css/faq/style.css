@@ -1,0 +1,200 @@
+*{
+    margin : 0;
+    padding : 0;
+}
+section.FAQ-Banner {
+    background: #07116f;
+    color: #fff;
+    padding: 50px 0;
+    position: relative;
+    height: 70vh;
+}
+.Banner-Heading {
+    position: absolute;
+    bottom: 50px;
+}
+h1.heading-title {
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+.Banner-Heading h6 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+p.faq-text {
+    text-transform: capitalize;
+    font-size: 18px;
+}
+.top-wiz-footer{
+    background: #07116f;
+    color: #fff;
+    padding: 50px 0;
+}
+footer.top-wiz-footer ul {
+    list-style: none;
+}
+.linkss li {
+    padding-top: 15px;
+}
+.linkss li a {
+    color: #fff;
+    text-decoration: none;
+}
+.contact-page{
+    padding: 50px 0;
+}
+button.btn.btn-custom {
+    background-color: #07116f;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+}
+button.btn.btn-custom:hover {
+    color: #07116f;
+    background-color: #fff;
+}
+.submit {
+    display: table;
+    margin: auto;
+}
+.form-heading h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #07116f;
+    font-size: 24px;
+    font-weight: 800;
+}
+.contact-form {
+    padding: 40px 20px;
+    box-shadow: 0 0 10px #ccc;
+}
+.contact-details h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #07116f;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+.details-box h4 {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: #07116f;
+}
+.details-box {
+    margin-bottom: 20px;
+}
+.details-box p {
+    font-size: 16px;
+    color: #555555;
+    text-transform: capitalize;
+}
+.details-box a {
+    font-size: 16px;
+    color: #555555;
+    text-decoration: none;
+}
+
+/* this is from other source */
+body{
+    font-family: 'Work Sans', sans-serif;
+}
+.faq-heading{
+    border-bottom: #777;
+    padding: 20px 60px;
+}
+.faq-container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+.hr-line{
+  width: 60%;
+  margin: auto;
+}
+/* Style the buttons that are used to open and close the faq-page body */
+.faq-page {
+    /* background-color: #eee; */
+    color: #444;
+    cursor: pointer;
+    padding: 30px 20px;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: all 2s ease;
+    margin: auto;
+    font-size: 20px;
+    text-align: left;
+
+}
+.faq-body{
+    margin: auto;
+    /* text-align: center; */
+   width: 50%; 
+   padding: auto;
+   
+}
+.faq-container{
+    padding: 50px 0;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.faq-page:hover {
+    background-color: #F9F9F9;
+}
+
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+    padding: 15px 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.faq-page:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+@media(max-width:768px){
+    h1.heading-title {
+        font-size: 50px;
+    }
+    .col-6 {
+        width: 100% !important;
+    }
+    .contact-details h2 {
+        font-size: 30px;
+    }
+    .Banner-Heading h6 {
+        font-size: 16px;
+    }
+    p.faq-text {
+        font-size: 14px;
+    }
+    .faq-page {
+        width: 98%;
+        font-size: 17px;
+    }
+    .hr-line {
+        width: 90%;
+    }
+    .faq-body {
+        width: 80%;
+    }
+
+}

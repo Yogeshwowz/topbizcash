@@ -1,0 +1,67 @@
+*{margin:0px;padding:0px;box-sizing: border-box;}
+.banner{background-size:cover;height:100vh;}
+.banner-content h1{font-size:75px;color:#fff;font-weight: bold;}
+.banner-content p{font-size:18px;color:#fff;font-weight: bold;}
+.banner-content button{background-color:#b3e0be;padding:12px 80px;font-weight: bold;
+font-size:28px;border-radius:32px;border:none;cursor:pointer;}
+.banner-content {padding: 57px 0px;}
+.second-section-box{border-right:2px solid#07116f;border-left:2px solid#07116f;}
+.second-section-box h3{color:#07116f;}
+.second-section-box p{color:#5d5d5f;font-size: 18px;}
+.btnn a button{padding:12px 150px;background-color:#07116f;color:#fff;border-radius:28px;
+	border:none;font-size:25px;font-weight: bold;cursor:pointer;}
+.minimum{background-color:#07116f;}
+.minimum h3{font-size:40px;}
+.text-row{display: flex;align-items:center;height:50px;}
+.text-row p{margin:0px;margin-left: 20px;font-weight:600;}
+.small{background-color:#f7fafd;}
+.small-content h3{font-size: 40px;}
+.small-content p{color:#a9afbb;}
+.small-content li{list-style: none;background-color:#fff;padding: 0px 10px;
+	color:#a9afbb;margin:20px 0px; width: 55%;}
+.bordr{background-color:#31c961;width:100px;height:3px;border-radius: 10px;}
+.target{background-color:#07116f;}
+.target h3{font-size:40px;}
+.apply-btn{background-color:#f3f6fa;padding: 80px 0px;}
+.apply-heading{font-size:40px;color:#07116f;}
+.apply-btn h3{font-size:40px; font-weight:bold;color:#07116f;}
+.apply-btn button{background-color: #0074ff;padding:9px 0px;border-radius:32px;
+color:#fff;border:none;margin-top:25px;width:20%;font-size:30px;font-weight: bold; }
+.footer{background-color:#07116f;}
+.contact h3{font-size:40px;color:#07116f;font-weight:bold;}
+.contact input{margin:8px 0px;padding:13px 11px;width:100%;}
+form{padding:40px;border:1px solid#07116f;}
+textarea{padding:10px;/*width: 100%;*/margin:15px 0px;}
+.btnnn{background-color:#07116f;color:#fff;font-weight:bold;}
+.footer-box img{width:100px;height: 120px;}
+.social li{list-style:none;padding-right:10px;color:#fff;}
+.social ul{display:flex;}
+.back{background-color:none!important;}
+.linkss li{list-style:none;padding:6px 0px 10px;}
+.linkss a{color:#fff;}
+.cards{padding:50px;}
+.online h3{font-size:40px;font-weight:bold;color:#07116f;}
+input[placeholder], [placeholder], *[placeholder] {
+    /*color:#07116f!important;*/font-weight:bold;}
+.apply-btnn button{padding:10px 200px!important;background-color:#07116f;color:#fff;
+	font-weight:bold;font-size: 20px;border:none;cursor: pointer;}
+
+i.fa.fa-calendar {
+    position: absolute;
+    top: 10px;
+    left: 90%;
+}
+.wpcf-form p {
+    display: flex;
+    justify-content: center;
+}
+
+span.wpcf7-list-item {
+    display: flex;
+    width: 100%;
+}
+
+span.wpcf7-list-item input {
+    width: auto;
+    margin-right: 15px;
+}

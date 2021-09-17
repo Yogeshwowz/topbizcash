@@ -1,0 +1,398 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href = "login-form.css" rel = "stylesheet"/>
+<link rel="stylesheet" href="TopBizCash_files/bootstrap.min.css">
+<style rel="stylesheet" href="TopBizCash_files/font-awesome.min.css"></style>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+</head>
+	<body>
+	<header>
+		<div class = "container">	
+				<nav class="navbar navbar-expand-lg ">
+				  <a class="navbar-brand" href="TopBizCash.html"><img src="TopBizCash_files/logo1.png" alt = "logo"/></a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+
+				  <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+					<ul class="form-inline my-2 my-lg-0 ml-auto">
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="#">Log out</a>
+						</div>
+					  </li>
+					</ul>
+				  </div>
+				</nav>
+        </div>
+	</header>
+
+	
+	<div class="container">
+	<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Loan Application Processing Form</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform" class="">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"></li>
+                                <li id="personal"></li>
+                                <li id="payment"></li>
+                                <li id="confirm"></li>
+                                <li id="E"></li>
+                                <li id="F"></li>
+                                <li id="G"></li>
+                            </ul> <!-- fieldsets -->
+                            <fieldset class="form-group ">
+                                <div class="form-card row">
+                                    <h2 class="fs-title col-12">BUSINESS INFORMATION</h2>
+									<div class="input-group col-6">
+									<input type="email" name="email" placeholder="Legal/corporate name:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="uname" placeholder="DBA:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="password" name="pwd" placeholder="Physical address:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="password" name="pwd" placeholder="City:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="password" name="pwd" placeholder="State:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="password" name="pwd" placeholder="Zip:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="password" name="pwd" placeholder="Business phone:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="Fax:" placeholder="Fax:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="Federal" placeholder="Federal tax ID:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="password" name="Contact" placeholder="Contact:" />
+									</div>
+									
+									<div class="input-group col-3">
+									<input type="password" name="Email" placeholder="E-mail:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="Website:" placeholder="website:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="date" placeholder="Date business started:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="Length of ownership:" placeholder="Length of ownership:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="year" placeholder="Years at location:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="password" name="locations" placeholder="NO. of locations:" />
+									</div>
+                                </div> 
+								
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card row">
+                                    <h2 class="fs-title">OWNERSHIP</h2><br><br>	
+									
+									<div class="input-group col-6">
+									<input type="password" name="Name:" placeholder="Name:" />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="password" name="number" placeholder="Contact phone number:" />
+									</div>
+									
+									<div class="input-group col-6">
+									<input type="text" name="adddress" placeholder="Home address:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="pwd" placeholder="City:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="pwd" placeholder="State:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="pwd" placeholder="Zip:" />
+									</div>
+									
+									<div class="input-group col-6">
+									<input type="text" name="dob" placeholder="Date of birth:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="ssn" placeholder="SSN:" />
+									</div>
+									
+									<div class="input-group col-6">
+									<input type="text" name="dob" placeholder="% Ownership of company:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="dob" placeholder="* Must have at least 67% ownership:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="ssn" placeholder=" Title:" />
+									</div>
+									
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                 <div class="form-card row">
+                                    <h2 class="fs-title">LEASE <small>(Landlord Information)</small></h2><br/><br>	
+									
+									<div class="input-group col-6">
+									<input type="text" name="Name:" placeholder="Landlord name:" />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="text" name="number" placeholder="Contact:" />
+									</div>
+									
+									<div class="input-group col-6">
+									<input type="text" name="Name:" placeholder="Monthly rent:" />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="text" name="number" placeholder="Phone:" />
+									</div>
+									
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                            </fieldset>
+                            <fieldset>
+                                 <div class="form-card row">
+                                    <h2 class="fs-title text-center">BUSINESS PROFILE</h2> <br/><br/>									
+									
+									<div class="input-group col-4">
+									<h5>Ownership: </h5>
+									<label><input type="checkbox" name=""/>Sole proprietorship</label>
+									<label><input type="checkbox" name=""/>Corporation </label>
+									<label><input type="checkbox" name=""/>Partnership</label>
+									<label><input type="checkbox" name=""/>LLC</label>
+									</div>
+									<div class=" col-4 row">
+									<h5 class="col-12 p-0">Merchant type: </h5>
+									<div class="input-group col-6 p-0">
+									<label><input type="checkbox" name=""/>Retail</label>
+									<label><input type="checkbox" name=""/>Restaurant </label>
+									<label><input type="checkbox" name=""/>Lodging</label>
+									<label><input type="checkbox" name=""/>Service</label>
+									</div>
+									<div class="input-group col-6 p-0">
+									<label><input type="checkbox" name=""/>Internet</label>
+									<label><input type="checkbox" name=""/>Home-based </label>
+									<label><input type="checkbox" name=""/>Automotive</label>
+									<label><input type="checkbox" name=""/>Other</label>
+									</div>
+									</div>
+									<div class="input-group col-1 "></div>
+									<div class="input-group col-3 ">
+									<h5> Cards accepted: </h5>
+									<label><input type="checkbox" name=""/>Visa</label>
+									<label><input type="checkbox" name=""/>MasterCard </label>
+									<label><input type="checkbox" name=""/>American Express</label>
+									<label><input type="checkbox" name=""/>Discover</label>
+									</div>
+								 <br><br>
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                            </fieldset>
+							
+							 <fieldset>
+                                <div class="form-card row">
+                                    <h2 class="fs-title">CASH ADVANCE</h2><br/><br/>	
+									
+									<div class="input-group col-12">
+									<label>Amount requested: (We provide up to 2 times a companies gross monthly bank revenue).</label>
+									<input type="text" name="Name:" placeholder="Amount requested" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Have you used a cash advance plan before?</label>
+									<input type="password" name="number" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average Visa/MasterCard monthly sales:</label>
+									<input type="text" name="Name:" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>If so, what company did you use?</label>
+									<input type="password" name="number" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average gross monthly sales:</label>
+									<input type="text" name="Name:" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Original Balance:</label>
+									<input type="password" name="number" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Current Balance? (Provide Original Contract)</label>
+									<input type="password" name="number" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average ticket size:</label>
+									<input type="text" name="Name:" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Current payment or daily holdback%</label>
+									<input type="password" name="number" placeholder="" />
+									</div>								
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+							 <fieldset>
+                                <div class="form-card row">
+                                    <h2 class="fs-title">OTHER INFORMATION</h2><br/><br/>	
+									
+									<div class="input-group col-12">
+									<label>Current processing company:</label>
+									<textarea> </textarea>
+									</div>
+									
+								</div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+							
+							 <fieldset>
+                                <div class="form-card row">
+                                    <h2 class="fs-title">SIGNATURE</h2><br/><br/>	
+									<p>By signing below, the Merchant and its owners/principals: (1) certify that all information on and documents submitted in connection with this Application are true, correct, and complete; and (2) authorize M&P, its agents, partners, and lenders to receive credit reports and any other information regarding the Merchant and its owners/principals from third parties, in order to verify any information provided on the Application.</p>
+									
+									<div class="input-group col-6">
+										<label for="myfile">Select a file:</label>
+										<input type="file" id="myfile" name="myfile">									
+									</div>
+									<div class="input-group col-6">
+										<label for="myfile">Date:</label>
+										<input type="date" id="" name="date">									
+									</div>
+									
+								</div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                           
+						
+						</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+  
+  <footer>
+	<div class = "container">
+	<div class = "row end">
+		<div class = "col-3">
+	<div class = "logo">
+			<a href = "#">
+			<img src="TopBizCash_files/logo1.png" alt = "logo"/></a>
+		</div>
+		</div>
+		<div class = "col-8">
+		<div class = "footer-content">
+			<h3>Disclaimer</h3>
+			<p>Topbizcash is a private business and not owned, operated, licensed by, nor affiliated with any federal, state, county, city government, or any agency, department,</p>
+			<a class = "footer-links" href = "#">Privacy Policy</a>&nbsp||
+			<a class = "footer-links" href = "#">Terms and Condition</a>
+		</div>
+		</div>
+		</div>
+  </footer>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+  $(document).ready(function(){
+
+var current_fs, next_fs, previous_fs; //fieldsets
+var opacity;
+
+$(".next").click(function(){
+
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//Add Class Active
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show();
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$(".previous").click(function(){
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//Remove class active
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show();
+
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+previous_fs.css({'opacity': opacity});
+},
+duration: 600
+});
+});
+
+$('.radio-group .radio').click(function(){
+$(this).parent().find('.radio').removeClass('selected');
+$(this).addClass('selected');
+});
+
+$(".submit").click(function(){
+return false;
+})
+
+});
+  </script>
+ </body>
+ </html>

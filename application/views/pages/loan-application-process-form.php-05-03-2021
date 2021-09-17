@@ -1,0 +1,370 @@
+<style>
+.by-default-hide,.by-default-hide-ow,.by-default-hide-card {display:none;}
+.error-radio{color: red;font-size: 12px;}
+</style>
+<div class="container">
+	<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Loan Application Processing Form</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <div id="msform" class="">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"></li>
+                                <li id="personal"></li>
+                                <li id="payment"></li>
+                                <li id="confirm"></li>
+                                <li id="E"></li>
+                                <li id="F"></li>
+                                <li id="G"></li>
+                            </ul> <!-- fieldsets -->
+						 <form  class="form-group fieldset" id="step1"  action="#" method="post" role="form" novalidate="">
+                          <div class="">
+                                <div class="form-card row">
+                                    <h2 class="fs-title col-12">BUSINESS INFORMATION</h2>
+									<div class="input-group col-6">
+									<input type="text" name="business_name" placeholder="Legal/corporate name:"  required />
+									</div>
+									<div class="input-group col-3 inline">
+										<p>
+										<span> DBA :</span>
+										<span><label> <input  type="radio" name="business_dba_r" value="1" />Yes </label></span>
+										<span><label> <input type="radio" name="business_dba_r" value="0" /> No</label></span>
+										<span id="error_business_dba_r" style="display:none;" class="error-radio">You must select yes or no</span>	
+										</p>
+									
+									</div>
+									<div class="input-group col-3">
+									<input id="business_dba" class="by-default-hide" type="text" name="business_dba" placeholder="DBA:"   />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="business_physical_address" placeholder="Physical address:"  required />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="business_city" placeholder="City:"  required />
+									</div>
+									<div class="input-group col-2">
+									<select   name="business_state" required>
+									<option value="">Select State</option>
+									<?php foreach($state as $state) {?>
+									<option value="<?php echo $state->name;?>"><?php echo $state->name?></option>
+									<?php }?>
+									</select>
+									
+									</div>
+									<div class="input-group col-2">
+									<input  required maxlength="5"  class="numbervalidation" type="text" name="business_zip" placeholder="Zip:" />
+									</div>
+									<div class="input-group col-3">
+									<input  required maxlength="10"  class="numbervalidation"  type="text" name="business_phone" placeholder="Business phone:" />
+									</div>
+									<div class="input-group col-3 inline">
+										<p>
+										<span> Fax :</span>
+										<span><label> 
+										<input  type="radio" name="business_fax_r" value="1" />Yes </label></span>
+										<span><label> 
+										<input type="radio" name="business_fax_r" value="0" /> No</label></span>
+										<span id="error_business_fax_r" style="display:none;" class="error-radio">You must select yes or no</span>	
+										</p>
+									</div>
+									<div class="input-group col-3">
+									<input id="business_fax" class="by-default-hide" type="text" name="business_fax" placeholder="Fax:" />
+									</div>
+									<div class="input-group col-3">
+									<input required maxlength="9"  class="numbervalidation"  type="text" name="business_federal_tax_id" placeholder="Federal tax ID:" />
+									</div>
+									<div class="input-group col-3">
+									<input type="text" name="business_contact_no" placeholder="Contact:" />
+									</div>
+									
+									<div class="input-group col-3">
+									<input  required type="email" name="business_email" placeholder="E-mail:" />
+									</div>
+									<div class="input-group col-3 inline">
+										<span> Website :</span>
+										<span><label> <input  type="radio" name="business_website_r" value="1"/>Yes </label></span>
+										<span><label> <input type="radio" name="business_website_r" value="0" /> No</label></span>
+										<span id="error_business_website_r" style="display:none;" class="error-radio">You must select yes or no</span>
+										</p>
+									</div>
+									<div class="input-group col-3">
+									<input id="business_website" class="by-default-hide" type="text" name="business_website" placeholder="website:" />
+									</div>
+									<div class="input-group col-3">
+									<input required  class="datepicker" type="text" name="business_date" placeholder="Date business started:" />
+									</div>
+									<div class="input-group col-4">
+									<select required class="form-control"  name="business_length_of_ownership_month">
+									<option value="">Length of ownership Month</option>
+									<?php for($i=1; $i<=12; $i++) {?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php }?>
+									</select>
+									</div>
+									<div class="input-group col-4">
+									<select required class="form-control"  name="business_length_of_ownership_year">
+									<option value="">Length of ownership Year</option>
+									<?php for($i=2021; $i>=1900; $i--) {?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php }?>
+									</select>
+									</div>
+									<div class="input-group col-4">
+									<select required class="form-control"  name="business_year_at_location_month">
+									<option value="">Year at location month</option>
+									<?php for($i=1; $i<=12; $i++) {?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php }?>
+									</select>
+									</div>
+									<div class="input-group col-4">
+									<select required class="form-control"  name="business_year_at_location_month_year">
+									<option value="">Year at location Year</option>
+									<?php for($i=2021; $i>=1900; $i--) {?>
+									<option value="<?php echo $i;?>"><?php echo $i;?></option>
+									<?php }?>
+									</select>
+									</div>
+									
+									
+									<div class="input-group col-3">
+									<input required type="text" name="business_locations" placeholder="NO. of Locations:" />
+									</div>
+                                </div> 
+                                </div> 
+								
+								
+								<input name="businessBtn" id="businessBtn" type="submit" class="next1 action-button" value="Next">
+                            
+							</form>
+						 <form class="form-group fieldset" id="step2"  action="#" method="post" role="form" novalidate=""> 
+                              <div class="">
+                                <div class="form-card row">
+                                    <h2 class="fs-title">OWNERSHIP</h2><br><br>	
+									<p class="col-12 inline">
+										<span> OWNERSHIP :</span>
+										<span> <input type="radio" name="ownership_r" value="1">Yes </span>
+										<span> <input type="radio" name="ownership_r" value="0"> No </span>
+										</p>
+								   <div id="owershoipid" class="by-default-hide-ow form-card row">		
+									<div class="input-group col-6">
+									<input type="text" name="ownership_name" placeholder="Name:" required />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="text" name="ownership_contact_phone_number" placeholder="Contact phone number:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="ownership_adddress" placeholder="Home address:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="ownership_city" placeholder="City:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="ownership_state" placeholder="State:" />
+									</div>
+									<div class="input-group col-2">
+									<input type="text" name="ownership_zip" placeholder="Zip:" />
+									</div>
+									<div class="input-group col-6">
+									<input  class="datepicker" type="text" name="ownership_dob" placeholder="Date of birth:" />
+									</div>
+									<div class="input-group col-6">
+									<input maxlength="9"  class="numbervalidation" type="text" name="ownership_ssn" placeholder="SSN:" />
+									</div>
+									<div class="input-group col-6">
+									<input  maxlength="3"  class="numbervalidation" type="text" name="ownership_of_company" placeholder="% Ownership of company:" />
+									</div>
+									<div class="input-group col-6">
+									<input type="text" name="ownership_title" placeholder=" Title:" />
+									</div>
+									</div>
+                                </div>
+                                </div>
+								
+								<input type="button" name="previous" class="previous action-button-previous previous-step1" value="Previous" />
+								<div  id="owershoipidsubmit" class="by-default-hide-ow">
+								<input name="ownershipBtn" id="ownershipBtn" type="submit" class="next1 action-button" value="Next">
+								</div>
+                           
+                            </form>
+							
+							 <form class="form-group fieldset" id="step3"  action="#" method="post" role="form" novalidate=""> 
+							  <div class="">
+                                 <div class="form-card row">
+                                    <h2 class="fs-title">LEASE <small>(Landlord Information)</small></h2><br/><br>	
+									
+									<div class="input-group col-6">
+									<input type="text" name="landlord_name" placeholder="Landlord name:"  required />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="text" name="landlord_contact" placeholder="Contact:" />
+									</div>
+									
+									<div class="input-group col-6">
+									<input type="text" name="landlord_m_rent" placeholder="Monthly rent:" />
+									</div>
+									<div class="input-group col-6"> 
+									<input type="text" name="landlord_phone_no" placeholder="Phone:" />
+									</div>
+									
+                                </div>
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous previous-step2" value="Previous" />
+								
+								<input name="landlordBtn" id="landlordBtn" type="submit" class="next1 action-button" value="Next">
+                            </form>
+                             <form class="form-group fieldset" id="step4"  action="#" method="post" role="form" novalidate="" > 
+							 <div class="">
+                                 <div class="form-card row">
+                                    <h2 class="fs-title text-center">BUSINESS PROFILE</h2> <br/><br/>									
+									
+									<div class="input-group col-4">
+									<h5>Ownership: </h5>
+									<label><input type='checkbox' id='ownershipCheckAll'>Check all</label>
+									 
+									<?php foreach($ownership as $ownership){?>
+										<label><input type="checkbox" name="business_profile_ownership[]" value="<?php echo $ownership->name;?>"  class='ownershipcheckboxes'/><?php echo $ownership->name;?> </label>
+									<?php } ?>
+									</div>
+									<div class=" col-4 row">
+									<h5 class="col-12 p-0">Merchant type: </h5>
+									<div class="input-group "><label><input type='checkbox' id='merchantCheckAll' class="input-group col-6 p-0">Check all</label></div>
+									
+									<?php 
+									$num = 1;
+									foreach ( $merchant as $merchant ) { 
+									if($num%4) {
+										echo '<div class="input-group col-6 p-0">
+										<label><input type="checkbox" name="business_merchant_profile[]" value='.$merchant->name.'  class="merchantcheckboxes"/>'.$merchant->name.'</label>';
+									}if($num %4) {
+											echo '</div>';
+										}
+									 $num++;
+									}
+								?>
+								
+									
+									</div>
+									<div class="input-group col-1"></div>
+									<div class="input-group col-3">
+									<h5> Cards accepted: </h5>
+									<label class="inline">
+										
+										<span> <input type="radio" name="business_card_profile_r"value="1">Yes </span>
+										<span> <input type="radio" name="business_card_profile_r"value="0"> No </span>
+										</label>
+									<span id="cardid" class="by-default-hide-card">	
+									<label><input type='checkbox' id='cardCheckAll'>Check all</label>
+									<?php foreach($card as $card){?>
+										<label><input type="checkbox" name="business_card_profile[]" value="<?php echo $card->name;?>"  class='cardcheckboxes' /><?php echo $card->name;?> </label>
+									<?php } ?>
+									</span>
+									</div>
+									
+								 <br><br>
+                                </div>
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous previous-step3" value="Previous" />
+								<input name="business_profileBtn" id="business_profileBtn" type="submit" class="next1 action-button" value="Next">
+                            </form>
+							
+							 <form class="form-group fieldset">
+							  <div class="">
+                                <div class="form-card row">
+                                    <h2 class="fs-title">CASH ADVANCE</h2><br/><br/>	
+									
+									<div class="input-group col-12">
+									<label>Amount requested: (We provide up to 2 times a companies gross monthly bank revenue).</label>
+									<input type="text" name="cash_advance_amount" placeholder="Amount requested" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Have you used a cash advance plan before?</label>
+									<input type="text" name="cash_advance_plan_before" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average Visa/MasterCard monthly sales:</label>
+									<input type="text" name="cash_advance_master_m_sales" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>If so, what company did you use?</label>
+									<input type="text" name="cash_advance_company_use" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average gross monthly sales:</label>
+									<input type="text" name="cash_advance_average_g_m_sales" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Original Balance:</label>
+									<input type="text" name="cash_advance_o_balance" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Current Balance? (Provide Original Contract)</label>
+									<input type="text" name="cash_advance_c_balance" placeholder="" />
+									</div>
+									
+									<div class="input-group col-6">
+									<label>Average ticket size:</label>
+									<input type="text" name="cash_advance_average_t_size" placeholder="" />
+									</div>
+									<div class="input-group col-6"> 
+									<label>Current payment or daily holdback%</label>
+									<input type="text" name="cash_advance_c_payment" placeholder="" />
+									</div>								
+                                </div>
+                                </div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </form>
+							  <form class="form-group fieldset">
+							   <div class="">
+                                <div class="form-card row">
+                                    <h2 class="fs-title">OTHER INFORMATION</h2><br/><br/>	
+									
+									<div class="input-group col-12">
+									<label>Current processing company:</label>
+									<textarea> </textarea>
+									</div>
+									
+								</div>
+								</div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </form>
+							
+							  <form class="form-group fieldset">
+							   <div class="">
+                                <div class="form-card row">
+                                    <h2 class="fs-title">SIGNATURE</h2><br/><br/>	
+									<p>By signing below, the Merchant and its owners/principals: (1) certify that all information on and documents submitted in connection with this Application are true, correct, and complete; and (2) authorize M&P, its agents, partners, and lenders to receive credit reports and any other information regarding the Merchant and its owners/principals from third parties, in order to verify any information provided on the Application.</p>
+									
+									<div class="input-group col-6">
+										<label for="myfile">Select a file:</label>
+										<input type="file" id="myfile" name="myfile">									
+									</div>
+									<div class="input-group col-6">
+										<label for="myfile">Date:</label>
+										<input type="date" id="" name="date">									
+									</div>
+									
+								</div>
+								</div>
+								<input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+								<input type="button" name="next" class="next action-button" value="Next Step" />
+                            </form>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+  

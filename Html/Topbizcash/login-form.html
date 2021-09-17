@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href = "login-form.css" rel = "stylesheet"/>
+<link rel="stylesheet" href="TopBizCash_files/bootstrap.min.css">
+<style rel="stylesheet" href="TopBizCash_files/font-awesome.min.css"></style>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
+	<body>
+			<header>
+		<div class = "container">	
+				<nav class="navbar navbar-expand-lg ">
+				  <a class="navbar-brand" href="TopBizCash.html"><img src="TopBizCash_files/logo1.png" alt = "logo"/></a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+
+				  <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+					<ul class="form-inline my-2 my-lg-0 ml-auto">
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="#">Log out</a>
+						</div>
+					  </li>
+					</ul>
+				  </div>
+				</nav>
+        </div>
+	</header>
+	<div class = "container">
+		<div class = "row">
+			<div class="col-lg-6" id="registerDivContent">
+			
+                  <h3>Apply Now For Your Loan Application</h3>
+                  <p class="subText">Fast And Easy. Register To Start Your Application Now!</p>
+					<div class="alert alert-danger" id="error-email" style="display:none;">
+					 This email already exists, please try another one.
+					</div>
+                  <form id="registerForm" action="#.com/state" method="post" role="form" novalidate="">
+                                            
+                     <div class="form-group row mb-0">
+                        <div class="col-xl-6 mt-3">
+                           <input id="first_name" placeholder="First Name" type="text" class="form-control  homeStyleButton" name="first_name" value="" required="true" autocomplete="first_name" autofocus="">
+                        </div>
+                        <div class="col-xl-6 mt-3">
+                           <input id="last_name" placeholder="Last Name" type="text" class="form-control  homeStyleButton" name="last_name" value="" required="true" autocomplete="last_name" autofocus="">
+                        </div>
+                     </div>
+                     <div class="form-group row mb-0">
+                        <div class="col-xl-12 mt-3">
+                           <input id="email" type="email" placeholder="Email" class="form-control  homeStyleButton" name="email" value="" required="true" autocomplete="email">
+                        </div>
+                     </div>
+                     <div class="form-group row mb-0 d-none">
+                        <div class=" col-xl-12 mt-3">
+                           <select size="0" class="form-control homeStyleButton" required="true" name="state">
+                              <option selected="">North Carolina</option>
+                              <option disabled="" value="">What state are you in?</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="form-group row mb-0">
+                        <div class="col-xl-6 mt-3 mb-0">
+                           <input id="password" type="password" placeholder="Password" class="form-control  homeStyleButton" name="password" required="true" autocomplete="new-password">
+                        </div>
+                        <div class="col-xl-6 mt-3">
+                           <input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control homeStyleButton" name="password_confirmation" required="true" autocomplete="new-password">
+							  <div class="fv-plugins-message-container" style="display:none;" id="error-new-password" data-field="password_confirmation" data-validator="identical">The password and its confirm are not the same</div>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-md-12 mt-4">
+                           <div for="agreeTerms" class="col-form-label font-weight-bold">Terms of Service? *</div>
+                           <input id="agreeTerms" type="checkbox" value="1" class="checkmark " name="agreeTerms" required="" autofocus="">
+                           <span for="agreeTerms" class="">Please check agreeing to our <a target="_blank" class="text-success" >Terms of Service</a></span>
+						   <div style="display:none;" id="error-checkbox" class="fv-plugins-message-container"><div data-field="agreeTerms" data-validator="notEmpty" class="fv-help-block">You must agree to terms of service</div></div>
+                        </div>
+                        <div class="col-md-1">
+                           <input id="state" type="hidden" value="Texas" name="state">
+                        </div>
+                     </div>
+                     <div class="form-group row mb-0 text-center">
+                        <div class="col-md-12 mb-2 text-center">
+                           <a href="stepForm.html" class="btn get"> Get Started</a>
+                        </div>
+                 
+                     </div>
+                  </form>
+               </div>
+			<div class = "col-lg-6">
+				<img src="TopBizCash_files/business-loan-online.png" class="img-responsive" alt="#"/>
+				<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+		</div>   
+		</div>   
+	
+	 <footer>
+	<div class = "container">
+	<div class = "row end">
+		<div class = "col-3">
+	<div class = "logo">
+			<a href = "#">
+			<img src="TopBizCash_files/logo1.png" alt = "logo"/></a>
+		</div>
+		</div>
+		<div class = "col-8">
+		<div class = "footer-content">
+			<h3>Disclaimer</h3>
+			<p>Topbizcash is a private business and not owned, operated, licensed by, nor affiliated with any federal, state, county, city government, or any agency, department,</p>
+			<a class = "footer-links" href = "#">Privacy Policy</a>&nbsp||
+			<a class = "footer-links" href = "#">Terms and Condition</a>
+		</div>
+		</div>
+		</div>
+  </footer>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

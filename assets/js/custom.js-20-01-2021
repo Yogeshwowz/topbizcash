@@ -1,0 +1,1498 @@
+$(document).ready(function(){
+	var baseURL = $('#baseURL').val();
+	
+	$( "#stateForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#stateForm select[required=true]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                
+                
+        });
+		
+          if(proceed){
+			//var state =$('#state').val();
+			var state = $( "#state option:selected" ).text();
+			window.location.href= baseURL+"state/"+state;
+			
+        }
+       return false;
+		event.preventDefault();
+		
+    });		
+	$("#stateForm select[required=true]").change(function() { 
+        $(this).css('border-color',''); 
+	});
+	
+	
+	
+	
+$( "#registerForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#registerForm input[required=true],#registerForm radio[required=true],#registerForm select[required=true]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                //check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				var pass = $('#password').val();
+				var password_confirm= $('#password-confirm').val();
+				if(pass!=password_confirm){
+					$("#error-new-password").show();
+					 proceed = false;
+				}
+				if ($("input[name='agreeTerms']").is(':checked')) {}else{
+					$("input[name='agreeTerms']").css('outline','#dc3545');
+					$("#error-checkbox").show();
+					 proceed = false;
+				}
+				if ($("input[name='expedite']").is(':checked')) {}else{
+					$("input[name='expedite']").css('outline','#dc3545');
+					$("#error-radio").show();
+					 proceed = false;
+				}
+        });
+		
+          if(proceed){
+			H5_loading.show();
+			var formData = $("#registerForm").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/userRegistration',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					if(msgData==1){
+						$('#error-email').show();
+						
+					}else{
+						window.location.href=baseURL+"organizationinformation";
+						return false;
+					}
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });		
+	$("#registerForm input[required=true]").keyup(function() { 
+        $(this).css('border-color',''); 
+	});	
+	
+	$( "#registerFormId" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#registerFormId input[required=true],#registerFormId radio[required=true],#registerFormId select[required=true]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                //check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				var pass = $('#password').val();
+				var password_confirm= $('#password-confirm').val();
+				if(pass!=password_confirm){
+					$("#error-new-password").show();
+					 proceed = false;
+				}
+				if ($("input[name='agreeTerms']").is(':checked')) {}else{
+					$("input[name='agreeTerms']").css('outline','#dc3545');
+					$("#error-checkbox").show();
+					 proceed = false;
+				}
+				
+        });
+		
+          if(proceed){
+			H5_loading.show();
+			var formData = $("#registerFormId").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/userRegistration',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					if(msgData==1){
+						$('#error-email').show();
+						
+					}else{
+						window.location.href=baseURL+"organizationinformation";
+						return false;
+					}
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });		
+	$("#registerFormId input[required=true]").keyup(function() { 
+        $(this).css('border-color',''); 
+	});	
+	
+	
+	$("#password-confirm").keyup(function() { 
+      $("#error-new-password").hide();
+	});
+	$('#agreeTerms').on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-checkbox").hide();
+            }
+    });
+	$("input[name='expedite']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio").hide();
+            }
+    });
+	
+	
+	$( "#loginForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#loginForm input[required=true]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                //check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				
+        });
+		
+          if(proceed){
+			H5_loading.show();
+			var formData = $("#loginForm").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/userLogin',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					if(msgData==1){
+						$('#error-email').show();
+						
+					}else{
+						window.location.href=baseURL+"organizationinformation";
+						return false;
+					}
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });
+	
+	
+	
+	$("#typeOfEntity").change(function() { 
+      var typeOfEntity =   $(this).val();
+		if(typeOfEntity==1){
+			$('#feinDiv,#Businessdiv,#texasFileNumberDiv').addClass("display-none");
+			$('#SSNDiv,#fnamediv,#middlediv,#lnamediv').removeClass("display-none");
+			$('#fnamediv,#middlediv,#lnamediv').removeClass("by-default-hide");
+			$("#FEIN,#businessName").prop('required',false);
+			$("#individualSSN,#fname,#lname").prop('required',true);
+		}
+		if(typeOfEntity==2 || typeOfEntity==3 || typeOfEntity==4 || typeOfEntity==5 || typeOfEntity==7){
+			$('#feinDiv,#texasFileNumberDiv,#Businessdiv').removeClass("display-none");
+			$('#SSNDiv').addClass("display-none");
+			$('#fnamediv,#middlediv,#lnamediv').addClass("by-default-hide");
+			$("#individualSSN,#fname,#lname").prop('required',false);
+			$("#FEIN,#texasFileNumber,#businessName").prop('required',true);
+		}
+		if(typeOfEntity==6 || typeOfEntity==8 || typeOfEntity==9 || typeOfEntity==10 || typeOfEntity==11){
+			$('#feinDiv,#Businessdiv').removeClass("display-none");
+			$('#SSNDiv').addClass("display-none");
+			$('#fnamediv,#middlediv,#lnamediv').addClass("by-default-hide");
+			$('#fname,#lname').prop('required',false);
+			$("#individualSSN,#texasFileNumber").prop('required',false);
+			$("#FEIN,#businessName").prop('required',true);
+		}
+			
+	});	
+	$( "#texasOrganizationInformationForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#texasOrganizationInformationForm input[required],#texasOrganizationInformationForm radio[required],#texasOrganizationInformationForm select[required]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                /*if ($("input[name='involvedInMerger']").is(':checked')) {}else{
+					$("input[name='involvedInMerger']").css('outline','#dc3545');
+					$("#error-radio-1").show();
+					 proceed = false;
+				}
+				if ($("input[name='businessLocation']").is(':checked')) {}else{
+					$("input[name='businessLocation']").css('outline','#dc3545');
+					$("#error-radio-2").show();
+					 proceed = false;
+				}*/
+				if ($("input[name='TIN']").is(':checked')) {}else{
+					$("#error-radio-1").show();
+					proceed = false;
+				}
+        });
+		
+          if(proceed){
+			  
+			H5_loading.show();
+			var formData = $("#texasOrganizationInformationForm").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/organizationInformationForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					if(msgData==1){
+						window.location.href=baseURL+"primary";
+						return false;
+					}
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });		
+	//$("#texasOrganizationInformationForm input[required]").keyup(function() {
+		
+	$('body').on('keyup', '#texasOrganizationInformationForm input[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	
+	$("#texasOrganizationInformationForm select[required]").change(function() { 
+        $(this).css('border-color',''); 
+	});
+	$("input[name='involvedInMerger']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio-2").hide();
+            }
+    });
+	$("input[name='businessLocation']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio-3").hide();
+            }
+    });
+	
+	$("input[name='TIN']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio-1").hide();
+            }
+    });
+	
+	$("input[name='TIN']").on('click', function () {
+       if($(this).prop("checked") == true){
+		   if ($("input[name='TIN']").is(':checked')) {
+			 var TIN =   $(this).val();
+			  if(TIN==1){
+				  $("#texasFileNumberDiv").removeClass("by-default-hide");
+				  $("#texasTIN").prop('required',true);
+			      
+			  }else{
+				   $("#texasFileNumberDiv").addClass("by-default-hide");
+				   $("#texasTIN").prop('required',false);
+			  }
+			 
+		   }
+              
+            }
+    });
+	
+	
+
+	
+	$( "#primaryForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#primaryForm input[required],#primaryForm radio[required],#primaryForm select[required]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                //check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+        });
+		
+          if(proceed){
+			  
+			H5_loading.show();
+			var formData = $("#primaryForm").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/primaryForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					$('#primaryContactModal').modal('hide');
+					$( "#accordion" ).append( msgData );
+					$('#primaryForm input[type="text"],#primaryForm input[type="email"],#primaryForm select,#primaryForm input[type="date"]').val('');
+					window.location.href=baseURL+"primary";
+						return false;
+					
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });
+	
+	$('body').on('keyup', '#primaryForm input[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	
+	$("#primaryForm select[required]").change(function() { 
+        $(this).css('border-color',''); 
+	});
+	
+	$( "#businessInformationForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#businessInformationForm input[required],#businessInformationForm radio[required],#businessInformationForm select[required]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+				//check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				if ($("input[name='personalBank']").is(':checked')) {}else{
+					$("#error-radio").show();
+					proceed = false;
+				}
+				if ($("input[name='creditCardPayments']").is(':checked')) {}else{
+					$("#error-radio-1").show();
+					proceed = false;
+				}
+				
+				if ($("input[name='involvedInMerger']").is(':checked')) {}else{
+					$("input[name='involvedInMerger']").css('outline','#dc3545');
+					$("#error-radio-2").show();
+					 proceed = false;
+				}
+				if ($("input[name='businessLocation']").is(':checked')) {}else{
+					$("input[name='businessLocation']").css('outline','#dc3545');
+					$("#error-radio-3").show();
+					 proceed = false;
+				}
+                
+        });
+		
+          if(proceed){
+			  
+			H5_loading.show();
+			var formData = $("#businessInformationForm").serialize();
+			
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/businessInformationForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					$('#primaryContactModal').modal('hide');
+					$( "#accordion" ).append( msgData );
+					$('#businessInformationForm input[type="text"],#businessInformationForm select,#businessInformationForm input[type="email"]').val('');
+					window.location.href= baseURL +'generalquestions';
+						return false;
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });
+	
+	
+	$('body').on('keyup', '#businessInformationForm input[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	$('body').on('change', '#businessInformationForm select[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	
+	
+	$("input[name='personalBank']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio").hide();
+            }
+    });
+	$("input[name='creditCardPayments']").on('click', function () {
+       if($(this).prop("checked") == true){
+              $("#error-radio-1").hide();
+            }
+    });
+	
+	$("input[name='creditCardPayments']").on('click', function () {
+       if($(this).prop("checked") == true){
+		   if ($("input[name='creditCardPayments']").is(':checked')) {
+			 var creditCardPayments =   $(this).val();
+			  if(creditCardPayments==1){
+				  $("#paymentProcessorDiv,#merchantIdentificationNumberDiv").removeClass("by-default-hide");
+				  $("#onlinePaymentProcessor,#merchantIdentificationNumber").prop('required',true);
+			      
+			  }else{
+				   $("#paymentProcessorDiv,#merchantIdentificationNumberDiv").addClass("by-default-hide");
+				   $("#onlinePaymentProcessor,#merchantIdentificationNumber").prop('required',false);
+			  }
+			 
+		   }
+              
+            }
+    });
+	
+	
+	
+	$( "#californiaSupplierForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#californiaSupplierForm input[required],#californiaSupplierForm radio[required],#californiaSupplierForm select[required]").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+				//check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				if ($("input[name='brAlternateContact']").is(':checked')) {}else{
+					$("input[name='brAlternateContact']").css('outline','#dc3545');
+					$("#error-radio-1").show();
+					 proceed = false;
+				}
+				
+                
+        });
+		
+          if(proceed){
+			  
+			H5_loading.show();
+			var formData = $("#californiaSupplierForm").serialize();
+			
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/californiaSupplierForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					$('#primaryContactModal').modal('hide');
+					$( "#accordion" ).append( msgData );
+					$('#californiaSupplierForm input[type="text"],#californiaSupplierForm select,#californiaSupplierForm input[type="email"]').val('');
+					window.location.href=baseURL+"agreements";
+						return false;
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });
+	
+	
+		$('body').on('keyup', '#californiaSupplierForm input[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	
+	$("#californiaSupplierForm select[required]").change(function() { 
+        $(this).css('border-color',''); 
+	});
+	
+	
+	
+	
+	$("input[name='alcoholicBeverages']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='alcoholicBeverages']").is(':checked')) {
+				 var alcoholicBeverages =   $(this).val();
+				  if(alcoholicBeverages==1){
+					  $("#alcoholDiv").removeClass("by-default-hide");
+					  
+					}else{
+					   $("#alcoholDiv").addClass("by-default-hide");
+					}
+				}
+				$("#error-radio-1").hide();
+					
+           }
+    });
+	$("input[name='temporaryLocations']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='temporaryLocations']").is(':checked')) {
+				 var temporaryLocations =   $(this).val();
+				 
+				  if(temporaryLocations==1){
+					  $("#temporaryLocationNameDiv,#periodInAttendanceDiv").removeClass("by-default-hide");
+					   $("#temporaryLocationName,#periodInAttendance").prop('required',true);
+					  
+				  }else{
+					  
+					   $("#temporaryLocationNameDiv,#periodInAttendanceDiv").addClass("by-default-hide");
+					   $("#temporaryLocationName,#periodInAttendance").prop('required',false);
+						$('#temporaryLocationName,#periodInAttendance').css('border-color','');
+					   
+				  }
+				 
+			   }
+			   $("#error-radio-2").hide();
+           }
+    });
+	$("input[name='homeBased']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='homeBased']").is(':checked')) {
+				 var homeBased =   $(this).val();
+				  if(homeBased==1){
+					  $("#directionsDiv").removeClass("by-default-hide");
+					  $("#directionsTextArea").prop('required',true);
+					   $("#directionsTextArea").css('border-color','#dc3545');
+					  
+				  }else{
+					   $("#directionsDiv").addClass("by-default-hide");
+					   $("#directionsTextArea").prop('required',false);
+					   $("#directionsTextArea").css('border-color','');
+				  }
+				 
+			   }
+           }
+		     $("#error-radio-3").hide();
+    });
+	$("input[name='mailOrder']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-4").hide();
+           }
+	});
+	$("input[name='salesPeople']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-5").hide();
+           }
+	});
+	$("input[name='atCustomersLocation']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-6").hide();
+           }
+	});
+	
+	
+	$("input[name='healthSpa']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='healthSpa']").is(':checked')) {
+				 var healthSpa =   $(this).val();
+				  if(healthSpa==1){
+					  $("#healthSpaHelpBlock").removeClass("by-default-hide");
+					 
+					}else{
+					   $("#healthSpaHelpBlock").addClass("by-default-hide");
+				  }
+				 
+			   }
+			   $("#error-radio-7").hide();
+           }
+    });
+	
+	$("input[name='wineryOutsideTexas']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='wineryOutsideTexas']").is(':checked')) {
+				 var wineryOutsideTexas =   $(this).val();
+				 
+				  if(wineryOutsideTexas==1){
+					  $("#beveragecommissionDiv").removeClass("by-default-hide");
+					   $("#beveragecommission").prop('required',true);
+					    $("#beveragecommission").css('border-color','#dc3545');
+					  
+				  }else{
+					  
+					   $("#beveragecommissionDiv").addClass("by-default-hide");
+					   $("#beveragecommission").prop('required',false);
+						$('#beveragecommission').css('border-color','');
+					   
+				  }
+				 
+			   }
+			   $("#error-radio-8").hide();
+           }
+    });
+	
+	$("input[name='operationmonth']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='operationmonth']").is(':checked')) {
+				 var operationmonth =   $(this).val();
+				 
+				  if(operationmonth==1){
+					  $("#operatemonthsDiv").removeClass("by-default-hide");
+					   $("#operatemonths").prop('required',true);
+					    $("#operatemonths").css('border-color','#dc3545');
+					  
+				  }else{
+					  
+					   $("#operatemonthsDiv").addClass("by-default-hide");
+					   $("#operatemonths").prop('required',false);
+						$('#operatemonths').css('border-color','');
+					   
+				  }
+				 
+			   }
+			   $("#error-radio-26").hide();
+           }
+    });
+	
+	
+	$("input[name='electronicCigarettes']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-9").hide();
+           }
+	});
+	$("input[name='electronicCigarettesOnline']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-10").hide();
+           }
+	});
+	$("input[name='telecommunicationServices']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-11").hide();
+           }
+	});
+	$("input[name='telecommunicationServicesUnderChapter711']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-12").hide();
+           }
+	});
+	$("input[name='sellFireworks']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-13").hide();
+           }
+	});
+	$("input[name='dieselPoweredEquipment']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-14").hide();
+           }
+	});
+	
+	
+	
+	
+	$("input[name='otherDistributionPoints']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='otherDistributionPoints']").is(':checked')) {
+				 var otherDistributionPoints =   $(this).val();
+				  if(otherDistributionPoints==1){
+					  $("#otherLocationDiv").removeClass("by-default-hide");
+					  $("#locationStreetAddress,#locationCity,#locationState,#locationZip").prop('required',true);
+					  $("#locationStreetAddress,#locationCity,#locationState,#locationZip").css('border-color','#dc3545');
+					}else{
+					   $("#otherLocationDiv").addClass("by-default-hide");
+					   $("#locationStreetAddress,#locationCity,#locationState,#locationZip").prop('required',false);
+					  $("#locationStreetAddress,#locationCity,#locationState,#locationZip").css('border-color','');
+					  
+				  }
+				 
+			   }
+			   $("#error-radio-15").hide();
+           }
+    });
+	$("input[name='exceed8k']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-16").hide();
+           }
+	});
+	
+	$("input[name='takingOrderTaxableItems']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-17").hide();
+           }
+	});
+	
+	$("input[name='receiptFromPersonalProperty']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-18").hide();
+           }
+	});
+	
+	$("input[name='franchiseeOperatingUnderName']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-19").hide();
+           }
+		   
+
+	});
+
+	$("input[name='electronicOrPhysicalMarketplace']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-20").hide();
+           }
+	});
+	$("input[name='ownershipInSimilarBusiness']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-21").hide();
+           }
+	});
+	$("input[name='ownershipInBusinessMaintainsLocation']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-22").hide();
+           }
+	});
+	
+	
+	$("input[name='purchaseExistingBusiness']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='purchaseExistingBusiness']").is(':checked')) {
+				 var purchaseExistingBusiness =   $(this).val();
+				  if(purchaseExistingBusiness==1){
+					  $("#previousOwnerDiv").removeClass("by-default-hide");
+					   $("#previousOwnerTradeName,#previousOwnerPurchasePrice,#previousOwnerPurchaseDate,#previousOwnerTexasTaxpayerNumber,#previousOwnerFEIN,#previousOwnerStreetAddress,#previousOwnerCity,#previousOwnerState,#previousOwnerCounty,#previousOwnerZip").prop('required',true);
+					  $("#previousOwnerTradeName,#previousOwnerPurchasePrice,#previousOwnerPurchaseDate,#previousOwnerTexasTaxpayerNumber,#previousOwnerFEIN,#previousOwnerStreetAddress,#previousOwnerCity,#previousOwnerState,#previousOwnerCounty,#previousOwnerZip").css('border-color','#dc3545');
+					}else{
+					   $("#previousOwnerDiv").addClass("by-default-hide");
+					    $("#previousOwnerTradeName,#previousOwnerPurchasePrice,#previousOwnerPurchaseDate,#previousOwnerTexasTaxpayerNumber,#previousOwnerFEIN,#previousOwnerStreetAddress,#previousOwnerCity,#previousOwnerState,#previousOwnerCounty,#previousOwnerZip").prop('required',false);
+					  $("#previousOwnerTradeName,#previousOwnerPurchasePrice,#previousOwnerPurchaseDate,#previousOwnerTexasTaxpayerNumber,#previousOwnerFEIN,#previousOwnerStreetAddress,#previousOwnerCity,#previousOwnerState,#previousOwnerCounty,#previousOwnerZip,#otherPurchased").css('border-color','');
+					  
+				  }
+				 
+			   }
+           }
+		   $("#error-radio-23").hide();
+    });
+	
+	
+
+	
+	$("input[name='telecommunicationsservice']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='telecommunicationsservice']").is(':checked')) {
+				 var telecommunicationsservice =   $(this).val();
+				  if(telecommunicationsservice==1){
+					  $("#telecommunicationdiv").removeClass("by-default-hide");
+					  
+					}else{
+					   $("#telecommunicationdiv").addClass("by-default-hide");
+					}
+				}
+				$("#error-radio-25").hide();
+					
+           }
+    });	
+	
+	
+	$("input[name='sellwireless']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-27").hide();
+           }
+	});
+	
+	$("input[name='wirelessemergency']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-9-1-1-wireless").hide();
+           }
+	});
+	$("input[name='emergencyservices']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-9-1-1-emergency").hide();
+           }
+	});
+	$("input[name='equalizationsurcharge']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-9-1-1-equalization").hide();
+           }
+	});
+	
+
+	
+	$("input[name='alcoholicBeveragesPermit']").on('click', function () {
+       if($(this).prop("checked") == true){
+			  $("#error-radio-1-1").hide();
+           }
+	});
+	
+	
+	 $( "#generalQuestionsForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#generalQuestionsForm input[required],#generalQuestionsForm radio[required],#generalQuestionsForm select[required],#generalQuestionsForm textarea[required]").each(function(){
+                $(this).css('border-color',''); 
+				
+				
+				if ($("input[name='alcoholicBeverages']").is(':checked')) {
+					var alcoholicBeverages = $("input[name='alcoholicBeverages']:checked").val();
+					if(alcoholicBeverages==1){
+						if ($("input[name='alcoholicBeveragesPermit']").is(':checked')) {
+							var alcoholicBeveragesPermit = $("input[name='alcoholicBeveragesPermit']:checked").val();
+							if(alcoholicBeveragesPermit==''){
+								$("#error-radio-1-1").show();
+						        proceed = false;
+							}
+							
+						}else{
+							$("#error-radio-1-1").show();
+						  proceed = false;
+						}
+					}
+				}else{
+					$("#error-radio-1").show();
+					 proceed = false;
+				}
+				if ($("input[name='temporaryLocations']").is(':checked')) {
+					var temporaryLocations = $("input[name='temporaryLocations']:checked").val();
+					if(temporaryLocations==1){
+						
+						var temporaryLocationName = $("#temporaryLocationName") .val();
+						var periodInAttendance = $("#periodInAttendance") .val();
+						if(temporaryLocationName==''){
+							$("#temporaryLocationName").prop('required',true);
+							$('#temporaryLocationName').css('border-color','#dc3545');
+							proceed = false;
+						}
+						if(periodInAttendance==''){
+							$("#periodInAttendance").prop('required',true);
+							$('#periodInAttendance').css('border-color','#dc3545');
+							proceed = false;
+						}
+						
+					}else{
+						$("#temporaryLocationName,#periodInAttendance").prop('required',false);
+						$('#temporaryLocationName,#periodInAttendance').css('border-color','');
+					}
+					
+				}else{
+					$("#error-radio-2").show();
+					 proceed = false;
+				}
+				if ($("input[name='homeBased']").is(':checked')) {
+					var homeBased = $("input[name='homeBased']:checked").val();
+					if(homeBased==1){
+						
+						var directionsTextArea = $("#directionsTextArea") .val();
+						if(directionsTextArea==''){
+							$("#directionsTextArea").prop('required',true);
+							$('#directionsTextArea').css('border-color','#dc3545');
+							proceed = false;
+						}
+						
+					}else{
+						$("#directionsTextArea").prop('required',false);
+						$('#directionsTextArea').css('border-color','');
+					}
+					
+				}else{
+					$("#error-radio-3").show();
+					 proceed = false;
+				}
+				if ($("input[name='mailOrder']").is(':checked')) {
+				}else{
+					$("#error-radio-4").show();
+					 proceed = false;
+				}
+				if ($("input[name='salesPeople']").is(':checked')) {
+				}else{
+					$("#error-radio-5").show();
+					 proceed = false;
+				}
+				if ($("input[name='atCustomersLocation']").is(':checked')) {
+				}else{
+					$("#error-radio-6").show();
+					 proceed = false;
+				}
+				if ($("input[name='healthSpa']").is(':checked')) {
+				}else{
+					$("#error-radio-7").show();
+					 proceed = false;
+				}
+				
+				if ($("input[name='wineryOutsideTexas']").is(':checked')) {
+					var wineryOutsideTexas = $("input[name='wineryOutsideTexas']:checked").val();
+					if(wineryOutsideTexas==1){
+						
+						var beveragecommission = $("#beveragecommission") .val();
+						if(beveragecommission==''){
+							$("#beveragecommission").prop('required',true);
+							$('#beveragecommission').css('border-color','#dc3545');
+							$('#beveragecommission').focus();
+							proceed = false;
+						}
+						
+					}else{
+						$("#beveragecommission").prop('required',false);
+						$('#beveragecommission').css('border-color','');
+					}
+					
+				}else{
+					$("#error-radio-8").show();
+					 proceed = false;
+				}
+				
+				
+				
+				
+				if ($("input[name='electronicCigarettes']").is(':checked')) {
+				}else{
+					$("#error-radio-9").show();
+					 proceed = false;
+				}
+				if ($("input[name='electronicCigarettesOnline']").is(':checked')) {
+				}else{
+					$("#error-radio-10").show();
+					 proceed = false;
+				}
+				if ($("input[name='telecommunicationServices']").is(':checked')) {
+				}else{
+					$("#error-radio-11").show();
+					 proceed = false;
+				}
+				if ($("input[name='telecommunicationServicesUnderChapter711']").is(':checked')) {
+				}else{
+					$("#error-radio-12").show();
+					 proceed = false;
+				}
+				if ($("input[name='sellFireworks']").is(':checked')) {
+				}else{
+					$("#error-radio-13").show();
+					 proceed = false;
+				}
+				if ($("input[name='dieselPoweredEquipment']").is(':checked')) {
+				}else{
+					$("#error-radio-14").show();
+					 proceed = false;
+				}
+				
+				
+				if ($("input[name='otherDistributionPoints']").is(':checked')) {
+					var otherDistributionPoints = $("input[name='otherDistributionPoints']:checked").val();
+					if(otherDistributionPoints==1){
+						
+						var locationStreetAddress = $("#locationStreetAddress") .val();
+						var locationCity = $("#locationCity") .val();
+						var locationState = $("#locationState") .val();
+						var locationZip = $("#locationZip") .val();
+						
+						if(locationStreetAddress==''){
+							$("#locationStreetAddress").prop('required',true);
+							$('#locationStreetAddress').css('border-color','#dc3545');
+							$('#locationStreetAddress').focus();
+							proceed = false;
+						}
+						if(locationCity==''){
+							$("#locationCity").prop('required',true);
+							$('#locationCity').css('border-color','#dc3545');
+							$('#locationCity').focus();
+							proceed = false;
+						}
+						if(locationState==''){
+							$("#locationState").prop('required',true);
+							$('#locationState').css('border-color','#dc3545');
+							$('#locationState').focus();
+							proceed = false;
+						}
+						if(locationZip==''){
+							$("#locationZip").prop('required',true);
+							$('#locationZip').css('border-color','#dc3545');
+							$('#locationZip').focus();
+							proceed = false;
+						}
+						
+					}else{
+						$("#locationStreetAddress,#locationCity,#locationState,#locationZip").prop('required',false);
+						$('#locationStreetAddress,#locationCity,#locationState,#locationZip').css('border-color','');
+					}
+					
+				}else{
+					$("#error-radio-15").show();
+					 proceed = false;
+				}
+				
+				
+				if ($("input[name='exceed8k']").is(':checked')) {
+				}else{
+					$("#error-radio-16").show();
+					 proceed = false;
+				}
+				if ($("input[name='takingOrderTaxableItems']").is(':checked')) {
+				}else{
+					$("#error-radio-17").show();
+					 proceed = false;
+				}
+				if ($("input[name='receiptFromPersonalProperty']").is(':checked')) {
+				}else{
+					$("#error-radio-18").show();
+					 proceed = false;
+				}
+				if ($("input[name='franchiseeOperatingUnderName']").is(':checked')) {
+				}else{
+					$("#error-radio-19").show();
+					 proceed = false;
+				}
+				if ($("input[name='electronicOrPhysicalMarketplace']").is(':checked')) {
+				}else{
+					$("#error-radio-20").show();
+					 proceed = false;
+				}
+				if ($("input[name='ownershipInSimilarBusiness']").is(':checked')) {
+				}else{
+					$("#error-radio-21").show();
+					 proceed = false;
+				}
+				if ($("input[name='ownershipInBusinessMaintainsLocation']").is(':checked')) {
+				}else{
+					$("#error-radio-22").show();
+					 proceed = false;
+				}
+				if ($("input[name='purchaseExistingBusiness']").is(':checked')) {
+				}else{
+					$("#error-radio-23").show();
+					 proceed = false;
+				}
+				
+				if ($("input[name='telecommunicationsservice']").is(':checked')) {
+					var telecommunicationsservice = $("input[name='telecommunicationsservice']:checked").val();
+					if(telecommunicationsservice==1){
+						
+						if ($("input[name='wirelessemergency']").is(':checked')) {
+							var wirelessemergency = $("input[name='wirelessemergency']:checked").val();
+							if(wirelessemergency==''){
+								$("#error-radio-9-1-1-wireless").show();
+						        proceed = false;
+							}
+							
+						}else{
+							$("#error-radio-9-1-1-wireless").show();
+						  proceed = false;
+						}
+						
+						if ($("input[name='emergencyservices']").is(':checked')) {
+							var emergencyservices = $("input[name='emergencyservices']:checked").val();
+							if(emergencyservices==''){
+								$("#error-radio-9-1-1-emergency").show();
+						        proceed = false;
+							}
+							
+						}else{
+							$("#error-radio-9-1-1-emergency").show();
+						  proceed = false;
+						}
+						if ($("input[name='equalizationsurcharge']").is(':checked')) {
+							var equalizationsurcharge = $("input[name='equalizationsurcharge']:checked").val();
+							if(equalizationsurcharge==''){
+								$("#error-radio-9-1-1-equalization").show();
+						        proceed = false;
+							}
+							
+						}else{
+							$("#error-radio-9-1-1-equalization").show();
+						  proceed = false;
+						}
+						
+						
+						
+						
+					}
+				}else{
+					$("#error-radio-25").show();
+					 proceed = false;
+				}
+				
+				
+				
+				if ($("input[name='operationmonth']").is(':checked')) {
+					var operationmonth = $("input[name='operationmonth']:checked").val();
+					if(operationmonth==1){
+						
+						var operatemonths = $("#operatemonths") .val();
+						if(operatemonths==''){
+							$("#operatemonths").prop('required',true);
+							$('#operatemonths').css('border-color','#dc3545');
+							$('#operatemonths').focus();
+							proceed = false;
+						}
+						
+					}else{
+						$("#operatemonths").prop('required',false);
+						$('#operatemonths').css('border-color','');
+					}
+					
+				}else{
+					$("#error-radio-26").show();
+					 proceed = false;
+				}
+				
+				
+				
+				
+				
+				
+				if ($("input[name='sellwireless']").is(':checked')) {
+				}else{
+					$("#error-radio-27").show();
+					 proceed = false;
+				}
+				/*if ($("input[name='wirelessemergency']").is(':checked')) {
+				}else{
+					$("#error-radio-9-1-1-wireless").show();
+					 proceed = false;
+				}
+				if ($("input[name='emergencyservices']").is(':checked')) {
+				}else{
+					$("#error-radio-9-1-1-emergency").show();
+					 proceed = false;
+				}
+				if ($("input[name='equalizationsurcharge']").is(':checked')) {
+				}else{
+					$("#error-radio-9-1-1-equalization").show();
+					 proceed = false;
+				}*/
+				
+				
+				
+				
+				if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+				//check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				
+                
+                
+        });
+		
+          if(proceed){
+			 //alert('ddd');
+			 // return false;
+			H5_loading.show();
+			var formData = $("#generalQuestionsForm").serialize();
+			
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/generalQuestionsForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					$('#primaryContactModal').modal('hide');
+					$( "#accordion" ).append( msgData );
+					$('#generalQuestionsForm input[type="text"],#generalQuestionsForm select,#generalQuestionsForm input[type="email"]').val('');
+					window.location.href= baseURL+"supplierinformation/";
+						return false;
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });
+	
+	
+
+	
+		$('body').on('keyup', '#generalQuestionsForm input[required]', function() {
+		$(this).css('border-color',''); 
+	});
+	$('body').on('change', '#generalQuestionsForm select[required]', function() {
+	 $(this).css('border-color',''); 
+	});
+	
+	
+	$( "#contactForm" ).submit(function( event ){ //on form submit       
+        var proceed = true;
+		$("#contactForm input[required],#contactForm textarea[required] ").each(function(){
+                $(this).css('border-color',''); 
+                if(!$.trim($(this).val())){ //if this field is empty 
+                    $(this).css('border-color','#dc3545'); //change border color to red   
+					proceed = false; //set do not proceed flag
+					$(this).focus();
+                }
+                //check invalid email
+                var email_reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+                if($(this).attr("type")=="email" && !email_reg.test($.trim($(this).val()))){
+                    $(this).css('border-color','#dc3545'); //change border color to red  
+					proceed = false; //set do not proceed flag            
+                }
+				
+        });
+		
+          if(proceed){
+			H5_loading.show();
+			var formData = $("#contactForm").serialize();
+			$.ajax({
+				type: "POST",
+				url: baseURL+'home/contactForm',
+				data: {
+					formdata : formData
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					if(msgData==1){
+						$('#contact-id').show();
+						$('#contactForm input[type="text"],#contactForm input[type="email"],#contactForm textarea').val('');
+					}
+				
+				}
+			});
+				
+        }
+       return false;
+		event.preventDefault();
+		
+    });		
+	$("#contactForm input[required]").keyup(function() { 
+        $(this).css('border-color',''); 
+	});	
+	
+	
+	$(".numbervalidation").on("keypress keyup blur",function (event) {    
+           $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+	
+	
+	$("#primarytypeOfEntityid").on('click', function () {
+       var getvalue = $('#primarytypeOfEntityid').attr('rel');
+	   
+	   if(getvalue <= 1){
+		   $('#alert2').removeClass('d-none');
+		   //$('#alert2').focus();
+		   $('html, body').animate({ scrollTop: $('#header').offset().top }, 'slow');
+		   return false;
+		   
+	   }else{
+		    $('#alert2').addClass('d-none');
+	   }
+    });
+	
+	
+	$('body').on('change', '#primaryContactState', function() {
+		var primaryContactState = $(this).val();
+		if(primaryContactState=='Texas'){
+			$('#primaryCountyDivmain').removeClass('by-default-hide');
+			$('#primaryCountyDivtxt').addClass('by-default-hide');
+			$("#primaryContactCountytxt").prop('required',false);
+		     H5_loading.show();
+		    $.ajax({
+				type: "POST",
+				url: baseURL+'home/primarycountry',
+				data: {
+					primaryContactState : primaryContactState
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					 $( "#primaryContactCounty" ).replaceWith(msgData);
+					
+				
+				}
+			});
+		}else{
+			$('#primaryCountyDivmain').addClass('by-default-hide');
+			$('#primaryCountyDivtxt').removeClass('by-default-hide');
+		    $( "#primaryContactCounty" ).replaceWith('<select size="0" id="primaryContactCounty" name="primaryContactCounty" class="form-control"  ></select>');
+			$("#primaryContactCountytxt").prop('required',true);
+		   
+		}
+	});
+	
+	
+	
+	
+	
+	$('body').on('change', '#businessState', function() {
+		var businessState = $(this).val();
+		
+		if(businessState==44){
+			$('#businessCountyDiv').removeClass('by-default-hide');
+			$('#businessCountyDivtxt').addClass('by-default-hide');
+			$("#businessCountytxt").prop('required',false);
+			$("#businessCounty").prop('required',true);
+		    
+		}else{
+			$('#businessCountyDiv').addClass('by-default-hide');
+			$('#businessCountyDivtxt').removeClass('by-default-hide');
+			$("#businessCounty").prop('required',false);
+		    $("#businessCountytxt").prop('required',true);
+		   
+		}
+	});
+	
+	
+	
+	$('body').on('change', '#previousOwnerState', function() {
+		var previousOwnerState = $(this).val();
+		
+		if(previousOwnerState==44){
+			$('#previousOwnerCountyDiv').removeClass('by-default-hide');
+			$('#previousCountyDivtxt').addClass('by-default-hide');
+			$("#previousCountytxt").prop('required',false);
+			$("#previousOwnerCounty").prop('required',true);
+		    
+		}else{
+			$('#previousOwnerCountyDiv').addClass('by-default-hide');
+			$('#previousCountyDivtxt').removeClass('by-default-hide');
+			$("#previousOwnerCounty").prop('required',false);
+		    $("#previousCountytxt").prop('required',true);
+		   
+		}
+	});
+	
+	$('body').on('change', '#locationState', function() {
+		var locationState = $(this).val();
+		
+		if(locationState==44){
+			$('#gCountyDiv').removeClass('by-default-hide');
+			$('#gCountyDivtxt').addClass('by-default-hide');
+			$("#gCountytxt").prop('required',false);
+			$("#gCounty").prop('required',true);
+		    
+		}else{
+			$('#gCountyDiv').addClass('by-default-hide');
+			$('#gCountyDivtxt').removeClass('by-default-hide');
+			$("#gCounty").prop('required',false);
+		    $("#gCountytxt").prop('required',true);
+		   
+		}
+	});
+	
+	
+	
+	$("input[name='brAlternateContact']").on('click', function () {
+       if($(this).prop("checked") == true){
+			   if ($("input[name='brAlternateContact']").is(':checked')) {
+				 var brAlternateContact =   $(this).val();
+				  if(brAlternateContact==1){
+					  $("#AlternateContactDiv").removeClass("by-default-hide");
+					  $("#brContactNameAlternate,#brContactPhoneNumberAlternate,#brContactEmailAddressAlternate").prop('required',true);
+					  $("#brContactNameAlternate,#brContactPhoneNumberAlternate,#brContactEmailAddressAlternate").css('border-color','#dc3545');
+					}else{
+					   $("#AlternateContactDiv").addClass("by-default-hide");
+					   $("#brContactNameAlternate,#brContactPhoneNumberAlternate,#brContactEmailAddressAlternate").prop('required',false);
+					  $("#brContactNameAlternate,#brContactPhoneNumberAlternate,#brContactEmailAddressAlternate").css('border-color','');
+					  
+				  }
+				 
+			   }
+			   $("#error-radio-1").hide();
+           }
+    });
+	
+	
+	
+	$("#submitagg").on('click', function (event) {
+		event.preventDefault();
+       if($("input[name='agreeToTerms']").is(':checked')){
+            window.location.href =baseURL+"payment";
+            }else{
+				$("#error-radio-1").show();
+				
+			}
+    });
+	
+	
+	
+	
+	$("input[name='alcoholicBeverages']").on('click', function () {
+		//$amount = parseInt(109);
+		//$Expedite  = parseInt(49);
+	   $amount = parseFloat($('#basic_price').val());
+	   $Expedite  = parseFloat($('#expedited_price').val());
+       if($(this).prop("checked") == true){
+		   if ($("input[name='alcoholicBeverages']").is(':checked')) {
+			 var alcoholicBeverages =   $(this).val();
+			  if(alcoholicBeverages==1){
+				  $("#include-cls").removeClass("by-default-hide");
+				  
+				   $amount =  $Expedite + $amount;
+				   $('#amount').val($amount);
+				   
+				}else{
+					$('#amount').val($amount);
+				    $("#include-cls").addClass("by-default-hide");
+				   
+				}
+			 
+		   }
+              
+            }
+    });
+	
+});
+
+function deleteResponsiblePerson($id){
+	var baseURL = $('#baseURL').val();
+	H5_loading.show();
+	$.ajax({
+				type: "POST",
+				url: baseURL+'home/deleteprimaryForm',
+				data: {
+					id : $id
+				},
+				success: function(msgData) {
+					H5_loading.hide();
+					$('#card'+$id).remove();
+					window.location.href=baseURL+"primary";
+					return false;
+					
+				}
+			});
+}
